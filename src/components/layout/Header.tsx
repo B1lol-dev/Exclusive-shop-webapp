@@ -38,7 +38,7 @@ export const Header = () => {
                   className="capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400"
                   key={uuidv4()}
                 >
-                  <Link to={link.split(" ").join("-")}>{link}</Link>
+                  <Link to={`/${link.split(" ").join("-")}`}>{link}</Link>
                 </li>
               ))}
             </ul>
@@ -46,6 +46,7 @@ export const Header = () => {
               <input
                 type="search"
                 className="text-sm bg-ex-light-gray rounded-l-md px-5 py-[5px] outline-none h-full"
+                placeholder="What are you looking for?"
               />
               <button
                 type="submit"
@@ -73,6 +74,7 @@ export const Header = () => {
             />
             <button
               type="button"
+              className="hidden max-sm:block"
               onClick={() => {
                 setIsSidebarShowing((prev) => !prev);
               }}

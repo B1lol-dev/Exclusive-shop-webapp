@@ -37,6 +37,8 @@ export const Home = () => {
       .get(`${API_URL}/${API_ENDPOINTS.products}?limit=${productsLimit}`)
       .then((res) => {
         setProducts(res.data.products);
+      })
+      .finally(() => {
         productsSkeletonWrapper.current?.classList.add("hidden");
       });
   }, [productsLimit]);
