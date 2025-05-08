@@ -25,6 +25,7 @@ import ps5_img from "./assets/grid/ps5.png";
 import women_img from "./assets/grid/woman.png";
 import speakers_img from "./assets/grid/speakers.png";
 import parfume_img from "./assets/grid/parfume.png";
+import { Footer } from "@/components/layout/Footer";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
@@ -92,7 +93,7 @@ export const Home = () => {
             </button>
           </Container>
         </section>
-        <section>
+        <section className="pb-[56px]">
           <Container>
             <SectionTitle text="Featured" />
             <h1 className="mt-5 text-ex-black font-semibold text-4xl">
@@ -159,6 +160,7 @@ export const Home = () => {
           </Container>
         </section>
       </main>
+      <Footer />
     </>
   );
 };
