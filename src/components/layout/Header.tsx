@@ -137,7 +137,7 @@ function HeaderMobileSidebar({
 }) {
   return (
     <div
-      className={`hidden max-sm:flex flex-col gap-7 fixed top-0 left-0 bg-ex-white h-screen p-8 transition duration-300 ${
+      className={`hidden max-sm:flex flex-col gap-7 fixed z-10 top-0 left-0 bg-ex-white h-screen p-8 transition duration-300 ${
         isSidebarShowing ? "translate-x-[0%]" : "translate-x-[-100%]"
       }`}
     >
@@ -145,6 +145,7 @@ function HeaderMobileSidebar({
         <input
           type="search"
           className="text-sm bg-ex-light-gray rounded-l-md px-5 py-[5px] outline-none h-full"
+          placeholder="What are you looking for?"
         />
         <button
           type="submit"

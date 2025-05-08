@@ -13,7 +13,7 @@ import { v4 as uuidv4 } from "uuid";
 export const Category = () => {
   const params = useParams();
   const [products, setProducts] = useState([]);
-  const [productsLimit, setProductsLimit] = useState(PRODUCTS_LIMIT);
+  const [productsLimit] = useState(PRODUCTS_LIMIT);
   const productsSkeletonWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
