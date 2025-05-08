@@ -14,8 +14,8 @@ export const Footer = () => {
   return (
     <footer className="block! w-full bg-ex-black">
       <Container>
-        <div className="flex pt-[80px] pb-[60px] gap-[87px]">
-          <ul className="text-ex-white flex flex-col items-start gap-6">
+        <div className="flex pt-[80px] pb-[60px] gap-[87px] max-xl:grid max-xl:grid-cols-2 max-xl:justify-items-center max-lg:flex max-lg:flex-col max-lg:items-center">
+          <ul className="text-ex-white flex flex-col items-start gap-6 max-xl:items-center">
             <Link to="/">
               <h1 className="font-bold text-2xl">Exclusive</h1>
             </Link>
@@ -40,7 +40,7 @@ export const Footer = () => {
               </button>
             </form>
           </ul>
-          <ul className="text-ex-white flex flex-col items-start gap-4 max-w-[175px]">
+          <ul className="text-ex-white flex flex-col items-start gap-4 max-w-[175px] max-xl:items-center">
             <h3 className="font-semibold text-xl">Support</h3>
             <li>
               <a href="#">111 Bijoy sarani, Dhaka, DH 1515, Bangladesh.</a>
@@ -52,7 +52,7 @@ export const Footer = () => {
               <a href="tel:+88015888889999">+88015-88888-9999</a>
             </li>
           </ul>
-          <ul className="text-ex-white flex flex-col items-start gap-4 max-w-[123px] *:text-nowrap">
+          <ul className="text-ex-white flex flex-col items-start gap-4 max-w-[123px] max-xl:items-center *:text-nowrap">
             <h3 className="font-semibold text-xl">Account</h3>
             <li>
               <Link to="/account">My Account</Link>
@@ -70,7 +70,7 @@ export const Footer = () => {
               <Link to="/shop">Shop</Link>
             </li>
           </ul>
-          <ul className="text-ex-white flex flex-col items-start gap-4 max-w-[109px] *:text-nowrap">
+          <ul className="text-ex-white flex flex-col items-start gap-4 max-w-[109px] max-xl:items-center *:text-nowrap">
             <h3 className="font-semibold text-xl">Quick Link</h3>
             <li>
               <Link to="/privacy-policy">Privacy Policy</Link>

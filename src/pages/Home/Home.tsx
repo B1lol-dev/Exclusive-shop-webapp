@@ -161,7 +161,7 @@ export const Home = () => {
           </Container>
         </section>
       </main>
-      {/* <Footer /> */}
+      <Footer />
     </>
   );
 };
