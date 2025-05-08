@@ -28,7 +28,7 @@ export const Home = () => {
       .get(`${API_URL}/${API_ENDPOINTS.products}?limit=${productsLimit}`)
       .then((res) => {
         setProducts(res.data.products);
-        productsSkeletonWrapper.current?.remove();
+        productsSkeletonWrapper.current?.classList.add("hidden");
       });
   }, [productsLimit]);
 
@@ -82,6 +82,20 @@ export const Home = () => {
             >
               See more
             </button>
+          </Container>
+        </section>
+        <section className="">
+          <Container>
+            <SectionTitle text="Featured" />
+            <h1 className="mt-5 text-ex-black font-semibold text-4xl">
+              New Arrival
+            </h1>
+            <div className="grid h-[600px] mt-60 grid-cols-4 grid-rows-2 gap-8">
+              <div className="bg-ex-black row-start-1 row-end-3 col-start-1 col-end-3"></div>
+              <div className="bg-ex-black col-start-3 col-end-6"></div>
+              <div className="bg-ex-black col-start-3 col-end-4"></div>
+              <div className="bg-ex-black col-start-4 col-end-6"></div>
+            </div>
           </Container>
         </section>
       </main>
