@@ -11,23 +11,35 @@ export const useAuth = () => {
       return true;
     } else {
       localStorage.clear();
+      return false;
+    }
+  };
+
+  const getAdmins = async () => {
+    try {
+      const res = await axios.get(`${API_URL}/${API_ENDPOINTS.users}`);
+
+      const admins = res.data.users.filter((user: { role: string }) => {
+        return user.role == "admin";
+      });
+
+      return admins;
+    } catch (e) {
+      console.error(e);
     }
   };
 
   const isAdmin = async () => {
-    const adminToken = localStorage.getItem("adminToken");
-    if (!adminToken) return false;
-
     try {
-      const res = await axios.get(`${API_URL}/${API_ENDPOINTS.users}`);
-      const isValidAdmin = res.data.some(
-        (user: { role: string; accessToken: string }) =>
-          user.role === "admin" && user.accessToken === adminToken
-      );
-      return isValidAdmin;
-    } catch (error) {
-      console.error("Error verifying admin token:", error);
-      return false;
+      const res = await axios.get(`${API_URL}/auth/me`, {
+        headers: {
+          Authorization: `Bearer ${adminToken}`,
+        },
+      });
+
+      return res.data.role === "admin" ? true : false;
+    } catch (e) {
+      throw new Error(`Error: ${e}`);
     }
   };
 
@@ -35,5 +47,13 @@ export const useAuth = () => {
     localStorage.clear();
   };
 
-  return { isAuthenticated, isAdmin, user, logout, token, adminToken };
+  return {
+    isAuthenticated,
+    isAdmin,
+    user,
+    logout,
+    token,
+    adminToken,
+    getAdmins,
+  };
 };

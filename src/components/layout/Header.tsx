@@ -18,10 +18,13 @@ import { Heart, Menu, Search, ShoppingCart, X } from "lucide-react";
 
 // hooks
 import { useState } from "react";
+import { useAuth } from "@/hooks/useAuth";
 
 export const Header = () => {
-  const navLinks: Array<string> = ["home", "contact", "about", "sign in"];
+  const navLinks: Array<string> = ["home", "contact", "about"];
   const [isSidebarShowing, setIsSidebarShowing] = useState<boolean>(false);
+
+  const { isAuthenticated } = useAuth();
 
   return (
     <>
@@ -41,6 +44,15 @@ export const Header = () => {
                   <Link to={`/${link.split(" ").join("-")}`}>{link}</Link>
                 </li>
               ))}
+              {isAuthenticated() ? (
+                <li className="capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400">
+                  <Link to={`/account`}>account</Link>
+                </li>
+              ) : (
+                <li className="capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400">
+                  <Link to={`/sign-in`}>sign in</Link>
+                </li>
+              )}
             </ul>
             <form className="flex items-center relative h-[38px] max-sm:hidden">
               <input
@@ -61,7 +73,7 @@ export const Header = () => {
                   <Heart />
                 </button>
               </Link>
-              <Link to="cart">
+              <Link to="/cart">
                 <button type="button">
                   <ShoppingCart />
                 </button>
