@@ -44,7 +44,7 @@ export const Home = () => {
   return (
     <>
       <Header />
-      {/* <main>
+      <main>
         <section>
           <Container>
             <Swiper />
@@ -67,13 +67,13 @@ export const Home = () => {
                 <ArrowRight size={24} />
               </button>
             </div>
-            <div className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px]">
+            <div className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px] max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
               {products.map((product) => (
                 <ProductCard data={product} key={uuidv4()} />
               ))}
             </div>
             <div
-              className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px]"
+              className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px] max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1"
               ref={productsSkeletonWrapper}
             >
               {Array(PRODUCTS_LIMIT)
@@ -99,7 +99,7 @@ export const Home = () => {
             <h1 className="mt-5 text-ex-black font-semibold text-4xl">
               New Arrival
             </h1>
-            <div className="grid h-[600px] mt-[60px] grid-cols-4 grid-rows-2 gap-8">
+            <div className="grid h-[600px]! mt-[60px] grid-cols-4 grid-rows-2 gap-8 max-xl:hidden">
               <div className="bg-ex-black-sc row-start-1 row-end-3 col-start-1 col-end-3 overflow-hidden flex items-end justify-center relative group">
                 <img src={ps5_img} alt="playstation 5" />
                 <div className="text-ex-white absolute left-8 bottom-8 transition duration-300 translate-y-[120%] group-hover:translate-y-0">
@@ -157,10 +157,72 @@ export const Home = () => {
                 </div>
               </div>
             </div>
+            <MobileGrid />
           </Container>
         </section>
-      </main> */}
+      </main>
       {/* <Footer /> */}
     </>
   );
 };
+
+function MobileGrid() {
+  return (
+    <div className="hidden mt-[60px] gap-8 max-xl:flex flex-col">
+      <div className="bg-ex-black-sc overflow-hidden flex items-end justify-center relative group">
+        <img src={ps5_img} alt="playstation 5" />
+        <div className="text-ex-white absolute left-8 bottom-8 transition duration-300 translate-y-0">
+          <h4 className="text-ex-white-sc text-2xl font-semibold">
+            Playstation 5
+          </h4>
+          <p className="max-w-[242px] text-sm my-4">
+            Black and White version of the PS5 coming out on sale.
+          </p>
+          <a href="#" className="underline text-base font-medium">
+            Shop Now
+          </a>
+        </div>
+      </div>
+      <div className="bg-ex-black-sc overflow-hidden flex items-center justify-end relative group">
+        <img src={women_img} alt="woman" />
+        <div className="text-ex-white absolute left-8 bottom-8 transition duration-300 translate-y-0">
+          <h4 className="text-ex-white-sc text-2xl font-semibold">
+            Women’s Collections
+          </h4>
+          <p className="max-w-[242px] text-sm my-4">
+            Featured woman collections that give you another vibe.
+          </p>
+          <a href="#" className="underline text-base font-medium">
+            Shop Now
+          </a>
+        </div>
+      </div>
+      <div className="flex w-full items-center justify-between gap-8 max-sm:flex-col">
+        <div className="bg-ex-black-sc w-[50%] h-[300px] overflow-hidden flex items-center justify-center relative group max-sm:w-full">
+          <img src={speakers_img} alt="speakers" />
+          <div className="text-ex-white absolute left-8 bottom-8 transition duration-300 translate-y-0">
+            <h4 className="text-ex-white-sc text-2xl font-semibold">
+              Speakers
+            </h4>
+            <p className="max-w-[242px] text-sm my-4">
+              Amazon wireless speakers
+            </p>
+            <a href="#" className="underline text-base font-medium">
+              Shop Now
+            </a>
+          </div>
+        </div>
+        <div className="bg-ex-black-sc w-[50%] h-[300px] overflow-hidden flex items-center justify-center relative group max-sm:w-full">
+          <img src={parfume_img} alt="parfume" />
+          <div className="text-ex-white absolute left-8 bottom-8 transition duration-300 translate-y-0">
+            <h4 className="text-ex-white-sc text-2xl font-semibold">Perfume</h4>
+            <p className="max-w-[242px] text-sm my-4">GUCCI INTENSE OUD EDP</p>
+            <a href="#" className="underline text-base font-medium">
+              Shop Now
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
