@@ -8,7 +8,7 @@ export const useAuth = () => {
   const admin = JSON.parse(localStorage.getItem("admin")!);
 
   const isAuthenticated = () => {
-    if (token && user) {
+    if ((token && user) || adminToken || admin) {
       return true;
     } else {
       localStorage.clear();
@@ -40,7 +40,7 @@ export const useAuth = () => {
 
       return res.data.role === "admin" ? true : false;
     } catch (e) {
-      throw new Error(`Error: ${e}`);
+      throw new Error(`${e}`);
     }
   };
 

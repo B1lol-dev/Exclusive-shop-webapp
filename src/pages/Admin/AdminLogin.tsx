@@ -37,6 +37,8 @@ export const AdminLogin = () => {
         localStorage.setItem("adminToken", response.data.accessToken);
         localStorage.setItem("admin", JSON.stringify(response.data));
         navigate("/admin");
+      } else {
+        toast.error("This user is not admin");
       }
     } catch (e) {
       console.log(e);
