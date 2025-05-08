@@ -12,6 +12,7 @@ import { NotFound } from "./pages/404/NotFound";
 import { SignIn } from "./pages/Auth/SignIn";
 import { Admin } from "./pages/Admin/Admin";
 import { AdminLogin } from "./pages/Admin/AdminLogin";
+import { Category } from "./pages/Category/Category";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/admin" element={<Admin />} />
         <Route path="/admin/login" element={<AdminLogin />} />
+        <Route path="/category/:name" element={<Category />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

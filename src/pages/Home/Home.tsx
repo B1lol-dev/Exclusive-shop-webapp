@@ -26,11 +26,13 @@ import women_img from "./assets/grid/woman.png";
 import speakers_img from "./assets/grid/speakers.png";
 import parfume_img from "./assets/grid/parfume.png";
 import { Footer } from "@/components/layout/Footer";
+import { Link } from "react-router-dom";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
   const [productsLimit, setProductsLimit] = useState(PRODUCTS_LIMIT);
   const productsSkeletonWrapper = useRef<HTMLDivElement>(null);
+  const [categories, setCategories] = useState([]);
 
   useEffect(() => {
     axios
@@ -42,6 +44,14 @@ export const Home = () => {
         productsSkeletonWrapper.current?.classList.add("hidden");
       });
   }, [productsLimit]);
+
+  useEffect(() => {
+    axios
+      .get(`${API_URL}/${API_ENDPOINTS.products}/category-list`)
+      .then((res) => {
+        setCategories(res.data);
+      });
+  });
 
   return (
     <>
@@ -55,19 +65,30 @@ export const Home = () => {
         <section className="pt-[63px]">
           <Container>
             <SectionTitle text="Our Products" />
-            <div className="flex w-full justify-end items-center mt-[22px] gap-2">
-              <button
-                type="button"
-                className="bg-ex-light-gray rounded-full p-[11px]"
-              >
-                <ArrowLeft size={24} />
-              </button>
-              <button
-                type="button"
-                className="bg-ex-light-gray rounded-full p-[11px]"
-              >
-                <ArrowRight size={24} />
-              </button>
+            <div className="flex justify-between">
+              <div className="flex items-center overflow-auto gap-5">
+                {categories.map((category) => {
+                  return (
+                    <Link className="text-nowrap" to={`/category/${category}`}>
+                      {category}
+                    </Link>
+                  );
+                })}
+              </div>
+              <div className="flex items-center mt-[22px] gap-2">
+                <button
+                  type="button"
+                  className="bg-ex-light-gray rounded-full p-[11px]"
+                >
+                  <ArrowLeft size={24} />
+                </button>
+                <button
+                  type="button"
+                  className="bg-ex-light-gray rounded-full p-[11px]"
+                >
+                  <ArrowRight size={24} />
+                </button>
+              </div>
             </div>
             <div className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px] max-lg:grid-cols-3 max-md:grid-cols-2 max-sm:grid-cols-1">
               {products.map((product) => (
