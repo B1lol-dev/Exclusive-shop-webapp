@@ -14,10 +14,14 @@ import {
 } from "@/components/ui/select";
 
 // icons
-import { Heart, Search, ShoppingCart } from "lucide-react";
+import { Heart, Menu, Search, ShoppingCart, X } from "lucide-react";
+
+// hooks
+import { useState } from "react";
 
 export const Header = () => {
   const navLinks: Array<string> = ["home", "contact", "about", "sign in"];
+  const [isSidebarShowing, setIsSidebarShowing] = useState<boolean>(false);
 
   return (
     <>
@@ -28,7 +32,7 @@ export const Header = () => {
             <Link to="/" className="text-2xl font-bold text-ex-black">
               Exlusive
             </Link>
-            <ul className="flex text-ex-black text-base gap-12">
+            <ul className="flex text-ex-black text-base gap-12 max-sm:hidden">
               {navLinks.map((link) => (
                 <li
                   className="capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400"
@@ -38,7 +42,7 @@ export const Header = () => {
                 </li>
               ))}
             </ul>
-            <form className="flex items-center relative h-[38px]">
+            <form className="flex items-center relative h-[38px] max-sm:hidden">
               <input
                 type="search"
                 className="text-sm bg-ex-light-gray rounded-l-md px-5 py-[5px] outline-none h-full"
@@ -50,7 +54,7 @@ export const Header = () => {
                 <Search />
               </button>
             </form>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-4 max-sm:hidden">
               <Link to="/whishlist">
                 <button type="button">
                   <Heart />
@@ -62,6 +66,19 @@ export const Header = () => {
                 </button>
               </Link>
             </div>
+            <HeaderMobileSidebar
+              isSidebarShowing={isSidebarShowing}
+              setIsSidebarShowing={setIsSidebarShowing}
+              navLinks={navLinks}
+            />
+            <button
+              type="button"
+              onClick={() => {
+                setIsSidebarShowing((prev) => !prev);
+              }}
+            >
+              <Menu />
+            </button>
           </nav>
         </Container>
       </header>
@@ -73,8 +90,8 @@ function SubHeader() {
   return (
     <div className="w-full bg-ex-black text-ex-white-sc py-4">
       <Container className="flex items-center justify-between">
-        <div></div>
-        <h4 className="text-sm">
+        <div className="max-sm:hidden"></div>
+        <h4 className="text-sm max-sm:hidden">
           Summer Sale For All Swim Suits And Free Express Delivery - OFF 50%!{" "}
           <a href="#" className="font-semibold ml-2">
             ShopNow
@@ -91,6 +108,66 @@ function SubHeader() {
           </SelectContent>
         </Select>
       </Container>
+    </div>
+  );
+}
+
+function HeaderMobileSidebar({
+  navLinks,
+  isSidebarShowing,
+  setIsSidebarShowing,
+}: {
+  navLinks: Array<string>;
+  isSidebarShowing: boolean;
+  setIsSidebarShowing: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
+  return (
+    <div
+      className={`hidden max-sm:flex flex-col gap-7 fixed top-0 left-0 bg-ex-white h-screen p-8 transition duration-300 ${
+        isSidebarShowing ? "translate-x-[0%]" : "translate-x-[-100%]"
+      }`}
+    >
+      <form className="flex items-center relative h-[38px]">
+        <input
+          type="search"
+          className="text-sm bg-ex-light-gray rounded-l-md px-5 py-[5px] outline-none h-full"
+        />
+        <button
+          type="submit"
+          className="bg-ex-light-gray rounded-r-md px-5 py-[5px] h-full"
+        >
+          <Search />
+        </button>
+      </form>
+      <ul className="flex text-ex-black text-base gap-8 flex-col items-center">
+        {navLinks.map((link) => (
+          <li
+            className="text-xl capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400"
+            key={uuidv4()}
+          >
+            <Link to={link.split(" ").join("-")}>{link}</Link>
+          </li>
+        ))}
+      </ul>
+      <div className="flex items-center gap-4 flex-col">
+        <Link to="/whishlist">
+          <button type="button">
+            <Heart />
+          </button>
+        </Link>
+        <Link to="cart">
+          <button type="button">
+            <ShoppingCart />
+          </button>
+        </Link>
+      </div>
+      <button
+        type="button"
+        className="mx-auto"
+        onClick={() => setIsSidebarShowing(false)}
+      >
+        <X size={30} />
+      </button>
     </div>
   );
 }

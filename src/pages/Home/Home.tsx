@@ -44,7 +44,7 @@ export const Home = () => {
   return (
     <>
       <Header />
-      <main>
+      {/* <main>
         <section>
           <Container>
             <Swiper />
@@ -159,8 +159,8 @@ export const Home = () => {
             </div>
           </Container>
         </section>
-      </main>
-      <Footer />
+      </main> */}
+      {/* <Footer /> */}
     </>
   );
 };
