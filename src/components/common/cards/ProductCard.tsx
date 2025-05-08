@@ -10,6 +10,9 @@ import { Eye, Heart, Star, X } from "lucide-react";
 // utils
 import { v4 as uuidv4 } from "uuid";
 
+// components
+import { Link } from "react-router-dom";
+
 export const ProductCard = ({ data }: { data: IProductData }) => {
   const [isLiked, setIsLiked] = useState<boolean>(false);
   const [isPictureShowing, setIsPictureShowing] = useState<boolean>(false);
@@ -24,7 +27,8 @@ export const ProductCard = ({ data }: { data: IProductData }) => {
 
   return (
     <>
-      <div>
+      <div className="relative">
+        <Link to={`/product/${data.id}`} className="absolute inset-0"></Link>
         <div className="relative bg-ex-light-gray px-[40px] py-[35px] rounded-md">
           <img
             src={data.thumbnail}
