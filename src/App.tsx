@@ -14,6 +14,7 @@ import { Admin } from "./pages/Admin/Admin";
 import { AdminLogin } from "./pages/Admin/AdminLogin";
 import { Category } from "./pages/Category/Category";
 import { Search } from "./pages/Search/Search";
+import { About } from "./pages/About/About";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <Route path="/admin/login" element={<AdminLogin />} />
         <Route path="/category/:name" element={<Category />} />
         <Route path="/search/:name" element={<Search />} />
+        <Route path="/about" element={<About />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
