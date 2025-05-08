@@ -14,7 +14,7 @@ import type { JSX } from "react/jsx-runtime";
 // assets
 import swiper_1_img from "../assets/swiper/swiper_1.png";
 
-export default function Swiper() {
+export function Swiper() {
   return (
     <div className="w-full! mx-auto">
       <Carousel className="rounded-lg overflow-hidden">
