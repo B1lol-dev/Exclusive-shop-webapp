@@ -1,54 +1,64 @@
-# React + TypeScript + Vite
+# Exclusive Shop Webapp
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+Exclusive Shop Webapp is a modern e-commerce platform built with cutting-edge technologies to deliver a seamless shopping experience. The application includes features like product browsing, category filtering, admin management, and user authentication.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Tech Stack
 
-## Expanding the ESLint configuration
+- **Vite**: Fast and modern build tool.
+- **TypeScript**: Strongly typed JavaScript for better development experience.
+- **React**: Component-based UI library.
+- **Axios**: HTTP client for API requests.
+- **uuid**: Unique ID generation.
+- **shadcn**: UI components library.
+- **Radix UI**: Accessible UI primitives.
+- **TailwindCSS**: Utility-first CSS framework.
+- **jwt-decode**: Decode JSON Web Tokens.
+- **lucide-react**: Icon library for React.
+- **react-hot-toast**: Notifications for React.
+- **react-router-dom**: Routing for React applications.
+- **ESLint**: Code linting tool.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Pages
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+1. **Home**: Landing page showcasing products.
+2. **Categories**: Browse products by category.
+3. **Admin**: Admin dashboard for managing the platform (requires admin login).
+4. **Login**: User login page.
+5. **Admin Login**: Separate login page for admin users.
+6. **About**: Information about the platform.
+7. **Search**: Search functionality for products.
+8. **Product Page**: Detailed view of a specific product.
+
+## Features
+
+- **Authentication**: Admin dashboard is protected and requires login. Non-admin users cannot access admin functionalities.
+- **API Integration**: Data is fetched from the [dummyjson](https://dummyjson.com/) API.
+- **Responsive Design**: Optimized for all devices using TailwindCSS.
+- **Notifications**: Real-time feedback using `react-hot-toast`.
+
+## Getting Started
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/B1lol-dev/Exclusive-shop-webapp.git
+cd Exclusive-shop-webapp
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+2. Install dependencies:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+3. Start the development server:
+
+```bash
+npm run dev
+```
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
