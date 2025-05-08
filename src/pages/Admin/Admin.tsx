@@ -55,7 +55,9 @@ export const Admin = () => {
                   <span className="text-ex-red">{admin.firstName}</span>
                 </p>
               </div>
-              <h1 className="text-[40px] font-medium my-20">Admin panel</h1>
+              <h1 className="text-[40px] font-medium my-20 mb-50">
+                Admin panel
+              </h1>
             </Container>
           </section>
         </main>
