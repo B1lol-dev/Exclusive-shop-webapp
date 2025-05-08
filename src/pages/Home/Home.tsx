@@ -88,7 +88,8 @@ export const Home = () => {
               type="button"
               className="bg-ex-red text-ex-white font-medium text-base px-12 py-4 rounded-md block mx-auto mt-[76px]"
               onClick={() => {
-                setProductsLimit((prev) => prev);
+                productsSkeletonWrapper.current?.classList.remove("hidden");
+                setProductsLimit((prev) => prev + PRODUCTS_LIMIT);
               }}
             >
               See more
