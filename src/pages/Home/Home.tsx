@@ -16,6 +16,7 @@ import { Swiper } from "./components/Swiper";
 import { SectionTitle } from "./components/SectionTitle";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { ProductCard } from "@/components/common/cards/ProductCard";
+import { ProductCardSkeleton } from "@/components/skeleton/cards/ProductCardSkeleton";
 
 export const Home = () => {
   const [products, setProducts] = useState([]);
@@ -60,6 +61,22 @@ export const Home = () => {
                 <ProductCard data={product} key={uuidv4()} />
               ))}
             </div>
+            <div className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px]">
+              {Array(PRODUCTS_LIMIT)
+                .fill("")
+                .map(() => (
+                  <ProductCardSkeleton key={uuidv4()} />
+                ))}
+            </div>
+            <button
+              type="button"
+              className="bg-ex-red text-ex-white font-medium text-base px-12 py-4 rounded-md block mx-auto mt-[76px]"
+              onClick={() => {
+                setProductsLimit((prev) => prev);
+              }}
+            >
+              See more
+            </button>
           </Container>
         </section>
       </main>
