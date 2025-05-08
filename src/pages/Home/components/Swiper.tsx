@@ -31,7 +31,7 @@ export function Swiper() {
           </CarouselItem>
           <CarouselItem>
             <img
-              src="/placeholder.svg"
+              src={swiper_1_img}
               alt="Slide 2"
               width={1200}
               height={600}
@@ -41,7 +41,7 @@ export function Swiper() {
           </CarouselItem>
           <CarouselItem>
             <img
-              src="/placeholder.svg"
+              src={swiper_1_img}
               alt="Slide 3"
               width={1200}
               height={600}
