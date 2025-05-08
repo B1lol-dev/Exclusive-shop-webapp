@@ -135,6 +135,8 @@ function HeaderMobileSidebar({
   isSidebarShowing: boolean;
   setIsSidebarShowing: React.Dispatch<React.SetStateAction<boolean>>;
 }) {
+  const { isAuthenticated } = useAuth();
+
   return (
     <div
       className={`hidden max-sm:flex flex-col gap-7 fixed z-10 top-0 left-0 bg-ex-white h-screen p-8 transition duration-300 ${
@@ -163,6 +165,15 @@ function HeaderMobileSidebar({
             <Link to={link.split(" ").join("-")}>{link}</Link>
           </li>
         ))}
+        {isAuthenticated() ? (
+          <li className="text-xl capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400">
+            <Link to={`/account`}>account</Link>
+          </li>
+        ) : (
+          <li className="text-xl capitalize transition duration-200 hover:border-b-1 hover:border-b-gray-400">
+            <Link to={`/sign-in`}>sign in</Link>
+          </li>
+        )}
       </ul>
       <div className="flex items-center gap-4 flex-col">
         <Link to="/whishlist">

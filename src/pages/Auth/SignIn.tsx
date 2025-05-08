@@ -56,7 +56,7 @@ export const SignIn = () => {
       <Header />
       <main>
         <section>
-          <Container className="flex items-center justify-center gap-[129px]">
+          <Container className="flex items-center justify-center gap-[129px] max-xl:flex-col max-xl:pb-50">
             <div>
               <img src={phone_img} alt="Phone" />
             </div>
