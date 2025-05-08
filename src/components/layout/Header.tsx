@@ -19,12 +19,16 @@ import { Heart, Menu, Search, ShoppingCart, X } from "lucide-react";
 // hooks
 import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
+import { useNavigate } from "react-router-dom";
 
 export const Header = () => {
   const navLinks: Array<string> = ["home", "contact", "about"];
   const [isSidebarShowing, setIsSidebarShowing] = useState<boolean>(false);
 
   const { isAuthenticated } = useAuth();
+
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
 
   return (
     <>
@@ -54,11 +58,19 @@ export const Header = () => {
                 </li>
               )}
             </ul>
-            <form className="flex items-center relative h-[38px] max-sm:hidden">
+            <form
+              className="flex items-center relative h-[38px] max-sm:hidden"
+              onSubmit={(e) => {
+                e.preventDefault();
+                navigate("/search/" + search);
+              }}
+            >
               <input
                 type="search"
                 className="text-sm bg-ex-light-gray rounded-l-md px-5 py-[5px] outline-none h-full"
                 placeholder="What are you looking for?"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
               />
               <button
                 type="submit"
@@ -137,17 +149,27 @@ function HeaderMobileSidebar({
 }) {
   const { isAuthenticated } = useAuth();
 
+  const navigate = useNavigate();
+  const [search, setSearch] = useState("");
+
   return (
     <div
       className={`hidden max-sm:flex flex-col gap-7 fixed z-10 top-0 left-0 bg-ex-white h-screen p-8 transition duration-300 ${
         isSidebarShowing ? "translate-x-[0%]" : "translate-x-[-100%]"
       }`}
     >
-      <form className="flex items-center relative h-[38px]">
+      <form
+        className="flex items-center relative h-[38px]"
+        onSubmit={(e) => {
+          e.preventDefault();
+          navigate("/search/" + search);
+        }}
+      >
         <input
           type="search"
           className="text-sm bg-ex-light-gray rounded-l-md px-5 py-[5px] outline-none h-full"
           placeholder="What are you looking for?"
+          onChange={(e) => setSearch(e.target.value)}
         />
         <button
           type="submit"
