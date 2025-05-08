@@ -51,7 +51,7 @@ export const Home = () => {
       .then((res) => {
         setCategories(res.data);
       });
-  });
+  }, []);
 
   return (
     <>
