@@ -31,7 +31,7 @@ export const Admin = () => {
         <main>
           <section>
             <Container>
-              <h1>Welcome Admin</h1>
+              <h1 className="text-2xl">Welcome Admin</h1>
             </Container>
           </section>
         </main>

@@ -35,6 +35,7 @@ export const AdminLogin = () => {
 
       if (userResponse.data.role == "admin") {
         localStorage.setItem("adminToken", response.data.accessToken);
+        localStorage.setItem("admin", JSON.stringify(response.data));
         navigate("/admin");
       }
     } catch (e) {

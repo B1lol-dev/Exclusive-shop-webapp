@@ -5,6 +5,7 @@ export const useAuth = () => {
   const adminToken = localStorage.getItem("adminToken");
   const token = localStorage.getItem("token");
   const user = JSON.parse(localStorage.getItem("user")!);
+  const admin = JSON.parse(localStorage.getItem("admin")!);
 
   const isAuthenticated = () => {
     if (token && user) {
@@ -55,5 +56,6 @@ export const useAuth = () => {
     token,
     adminToken,
     getAdmins,
+    admin,
   };
 };
