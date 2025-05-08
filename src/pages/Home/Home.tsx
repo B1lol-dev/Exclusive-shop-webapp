@@ -7,7 +7,7 @@ import { PRODUCTS_LIMIT } from "@/constants/products";
 import { v4 as uuidv4 } from "uuid";
 
 // hooks
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 // components
 import { Container } from "@/components/helpers/Container";
@@ -21,12 +21,14 @@ import { ProductCardSkeleton } from "@/components/skeleton/cards/ProductCardSkel
 export const Home = () => {
   const [products, setProducts] = useState([]);
   const [productsLimit, setProductsLimit] = useState(PRODUCTS_LIMIT);
+  const productsSkeletonWrapper = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     axios
       .get(`${API_URL}/${API_ENDPOINTS.products}?limit=${productsLimit}`)
       .then((res) => {
         setProducts(res.data.products);
+        productsSkeletonWrapper.current?.remove();
       });
   }, [productsLimit]);
 
@@ -61,7 +63,10 @@ export const Home = () => {
                 <ProductCard data={product} key={uuidv4()} />
               ))}
             </div>
-            <div className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px]">
+            <div
+              className="grid grid-cols-4 justify-items-center gap-x-[30px] gap-y-[60px] mt-[60px]"
+              ref={productsSkeletonWrapper}
+            >
               {Array(PRODUCTS_LIMIT)
                 .fill("")
                 .map(() => (

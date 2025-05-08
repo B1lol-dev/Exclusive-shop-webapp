@@ -26,7 +26,11 @@ export const ProductCard = ({ data }: { data: IProductData }) => {
     <>
       <div>
         <div className="relative bg-ex-light-gray px-[40px] py-[35px] rounded-md">
-          <img src={data.thumbnail} alt={data.title} />
+          <img
+            src={data.thumbnail}
+            alt={data.title}
+            className="w-[190px] h-[180px]"
+          />
           <div className="absolute flex flex-col top-3 right-3 gap-2">
             <button
               type="button"
