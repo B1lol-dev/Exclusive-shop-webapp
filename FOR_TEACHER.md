@@ -1,6 +1,6 @@
-Assalomy aleykum!
+## Assalomy aleykum!
 
-Hamma etilgan narsa qilingan yani:
+### Hamma etilgan narsa qilingan yani:
 
 - Responsive Design
 - See more
@@ -10,7 +10,7 @@ Hamma etilgan narsa qilingan yani:
 - Product page (Details)
 - Navbar sidebar (mobile boganda)
 
-Tech Stack:
+### Tech Stack:
 
 - React (tezro qlwga)
 - Typescript (debugging tezro boliwiga)
@@ -21,7 +21,7 @@ Tech Stack:
 - React-hot-toast (custom alert la ucun)
 - Shadcn ui (component library, kopro "интерактив" qowiwga)
 
-Qowimcala:
+## Qowimcala:
 
 # Home:
 
